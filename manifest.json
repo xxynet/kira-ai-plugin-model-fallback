@@ -1,0 +1,15 @@
+{
+  "display_name": "Model Fallback",
+  "plugin_id": "kira-ai-plugin-model-fallback",
+  "core_version": ">=2.24.2",
+  "version": "1.0.0",
+  "author": "xxynet",
+  "description": "Adds ordered LLM fallback models after the configured default model.",
+  "tags": ["llm", "model", "fallback"],
+  "locales": {
+    "zh": {
+      "display_name": "模型回退",
+      "description": "在默认大语言模型之后添加按顺序尝试的回退模型。"
+    }
+  }
+}

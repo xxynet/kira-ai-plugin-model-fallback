@@ -1,0 +1,41 @@
+{
+  "fallback_model_1": {
+    "name": "First Fallback Model",
+    "type": "model_select",
+    "model_type": "llm",
+    "default": "",
+    "hint": "First model to try when the default LLM fails.",
+    "locales": {
+      "zh": {
+        "name": "第一回退模型",
+        "hint": "默认大语言模型调用失败后，优先尝试的模型。"
+      }
+    }
+  },
+  "fallback_model_2": {
+    "name": "Second Fallback Model",
+    "type": "model_select",
+    "model_type": "llm",
+    "default": "",
+    "hint": "Second model to try when earlier models fail.",
+    "locales": {
+      "zh": {
+        "name": "第二回退模型",
+        "hint": "默认模型和第一回退模型均调用失败后尝试的模型。"
+      }
+    }
+  },
+  "fallback_model_3": {
+    "name": "Third Fallback Model",
+    "type": "model_select",
+    "model_type": "llm",
+    "default": "",
+    "hint": "Third model to try when all earlier models fail.",
+    "locales": {
+      "zh": {
+        "name": "第三回退模型",
+        "hint": "默认模型和前两个回退模型均调用失败后尝试的模型。"
+      }
+    }
+  }
+}
