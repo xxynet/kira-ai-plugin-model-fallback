@@ -5,6 +5,7 @@
   "version": "1.0.0",
   "author": "xxynet",
   "description": "Adds ordered LLM fallback models after the configured default model.",
+  "repo": "https://github.com/xxynet/kira-ai-plugin-model-fallback",
   "tags": ["llm", "model", "fallback"],
   "locales": {
     "zh": {
