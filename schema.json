@@ -37,5 +37,18 @@
         "hint": "默认模型和前两个回退模型均调用失败后尝试的模型。"
       }
     }
+  },
+  "fallback_models": {
+    "name": "More Fallback Models",
+    "type": "multi_select",
+    "source": "model",
+    "model_type": "llm",
+    "hint": "Additional fallback models to try when all earlier models fail.",
+    "locales": {
+      "zh": {
+        "name": "更多回退模型",
+        "hint": "在默认模型和前几个回退模型均调用失败后尝试的额外回退模型。"
+      }
+    }
   }
 }

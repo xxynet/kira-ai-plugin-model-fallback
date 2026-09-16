@@ -14,8 +14,13 @@ class ModelFallbackPlugin(BasePlugin):
 
     async def initialize(self):
         configured_count = sum(
-            bool(str(self.plugin_cfg.get(key, "")).strip())
+            bool(str(self.plugin_cfg.get(key, "") or "").strip())
             for key in self.FALLBACK_MODEL_KEYS
+        )
+        configured_count += sum(
+            1
+            for model_uuid in (self.plugin_cfg.get("fallback_models", []) or [])
+            if str(model_uuid or "").strip()
         )
         self._invalid_model_keys: set[str] = set()
         logger.info(
@@ -40,19 +45,34 @@ class ModelFallbackPlugin(BasePlugin):
         model_group = [default_model]
         model_keys = {self._model_key(default_model)}
 
-        for config_key in self.FALLBACK_MODEL_KEYS:
-            model_uuid = str(self.plugin_cfg.get(config_key, "")).strip()
+        # Build an ordered (source_key, model_uuid) list. The numbered fields
+        # hold a single uuid each, while "fallback_models" is a multi_select
+        # that already stores a list of uuids as its value.
+        candidates: list[tuple[str, str]] = [
+            (config_key, str(self.plugin_cfg.get(config_key, "") or "").strip())
+            for config_key in self.FALLBACK_MODEL_KEYS
+        ]
+        more_fallback_models = self.plugin_cfg.get("fallback_models", []) or []
+        if isinstance(more_fallback_models, str):
+            more_fallback_models = [more_fallback_models]
+        candidates.extend(
+            ("fallback_models", str(model_uuid or "").strip())
+            for model_uuid in more_fallback_models
+        )
+
+        for source_key, model_uuid in candidates:
             if not model_uuid:
                 continue
 
             fallback_model = self.ctx.get_llm_client(model_uuid)
             if fallback_model is None:
-                if config_key not in self._invalid_model_keys:
+                cache_key = f"{source_key}:{model_uuid}"
+                if cache_key not in self._invalid_model_keys:
                     logger.warning(
                         f"[model-fallback] Ignoring unavailable fallback model "
-                        f"configured in {config_key}: {model_uuid}"
+                        f"configured in {source_key}: {model_uuid}"
                     )
-                    self._invalid_model_keys.add(config_key)
+                    self._invalid_model_keys.add(cache_key)
                 continue
 
             model_key = self._model_key(fallback_model)
