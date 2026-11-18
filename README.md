@@ -16,7 +16,7 @@ Empty selections are ignored. Duplicate selections are used only once.
 
 The agent tries the next model only after a provider-level failure, such as a network, timeout, or API error.
 
-Requires KiraAI >=3.2.0 with [KiraAI PR #437](https://github.com/xxynet/KiraAI/pull/437), which adds session-aware default LLM lookup and metadata-only session resolution. The original v3.2.0 release does not contain these APIs; use a build containing that merged change. An unavailable session selection raises an error instead of silently using the global default.
+Requires KiraAI >3.2.0 with [KiraAI PR #437](https://github.com/xxynet/KiraAI/pull/437), which adds session-aware default LLM lookup and metadata-only session resolution. The original v3.2.0 release does not contain these APIs; use a newer core version containing that merged change. An unavailable session selection raises an error instead of silently using the global default.
 
 ### Changes in v1.2.0
 
@@ -34,7 +34,7 @@ The session's selected LLM now takes precedence over the global default. The plu
 
 未选择的项会被忽略，重复模型只会尝试一次。仅在网络、超时或 API 错误等 Provider 级失败后，才会尝试下一个模型。
 
-需要 KiraAI >=3.2.0，且包含 [KiraAI PR #437](https://github.com/xxynet/KiraAI/pull/437) 提供的会话级默认模型选择和仅元数据会话解析接口。原始 v3.2.0 发布版不包含这些接口，请使用包含该合并改动的构建。会话指定的模型不可用时会报错，不会悄悄改用全局默认模型。
+需要 KiraAI >3.2.0，且包含 [KiraAI PR #437](https://github.com/xxynet/KiraAI/pull/437) 提供的会话级默认模型选择和仅元数据会话解析接口。原始 v3.2.0 发布版不包含这些接口，请使用包含该合并改动的更高版本核心。会话指定的模型不可用时会报错，不会悄悄改用全局默认模型。
 
 ### v1.2.0 变更
 

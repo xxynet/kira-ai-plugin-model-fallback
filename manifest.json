@@ -1,7 +1,7 @@
 {
   "display_name": "Model Fallback",
   "plugin_id": "kira-ai-plugin-model-fallback",
-  "core_version": ">=3.2.0",
+  "core_version": ">3.2.0",
   "version": "1.2.0",
   "author": "xxynet",
   "description": "Adds ordered LLM fallback models after the session's selected model or global default.",
