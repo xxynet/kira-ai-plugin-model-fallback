@@ -4,11 +4,11 @@
     "type": "model_select",
     "model_type": "llm",
     "default": "",
-    "hint": "First model to try when the default LLM fails.",
+    "hint": "First model to try when the session's selected LLM or global default fails.",
     "locales": {
       "zh": {
         "name": "第一回退模型",
-        "hint": "默认大语言模型调用失败后，优先尝试的模型。"
+        "hint": "会话选择的模型或全局默认大语言模型调用失败后，优先尝试的模型。"
       }
     }
   },
@@ -21,7 +21,7 @@
     "locales": {
       "zh": {
         "name": "第二回退模型",
-        "hint": "默认模型和第一回退模型均调用失败后尝试的模型。"
+        "hint": "会话首选模型（未设置时为全局默认）和第一回退模型均调用失败后尝试的模型。"
       }
     }
   },
@@ -34,7 +34,7 @@
     "locales": {
       "zh": {
         "name": "第三回退模型",
-        "hint": "默认模型和前两个回退模型均调用失败后尝试的模型。"
+        "hint": "会话首选模型（未设置时为全局默认）和前两个回退模型均调用失败后尝试的模型。"
       }
     }
   },
@@ -47,7 +47,7 @@
     "locales": {
       "zh": {
         "name": "更多回退模型",
-        "hint": "在默认模型和前几个回退模型均调用失败后尝试的额外回退模型。"
+        "hint": "在会话首选模型（未设置时为全局默认）和前几个回退模型均调用失败后尝试的额外回退模型。"
       }
     }
   }
