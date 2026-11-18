@@ -1,16 +1,16 @@
 {
   "display_name": "Model Fallback",
   "plugin_id": "kira-ai-plugin-model-fallback",
-  "core_version": ">=2.24.2",
-  "version": "1.1.0",
+  "core_version": ">=3.2.0",
+  "version": "1.2.0",
   "author": "xxynet",
-  "description": "Adds ordered LLM fallback models after the configured default model.",
+  "description": "Adds ordered LLM fallback models after the session's selected model or global default.",
   "repo": "https://github.com/xxynet/kira-ai-plugin-model-fallback",
   "tags": ["llm", "model", "fallback"],
   "locales": {
     "zh": {
       "display_name": "模型回退",
-      "description": "在默认大语言模型之后添加按顺序尝试的回退模型。"
+      "description": "在会话选择的模型或全局默认大语言模型之后添加按顺序尝试的回退模型。"
     }
   }
 }

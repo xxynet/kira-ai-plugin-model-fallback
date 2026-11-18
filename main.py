@@ -36,8 +36,9 @@ class ModelFallbackPlugin(BasePlugin):
 
     @on.im_batch_message(priority=Priority.HIGH)
     async def inject_fallback_models(self, event: KiraMessageBatchEvent):
-        """Set the default LLM first, followed by valid configured fallbacks."""
-        default_model = self.ctx.get_default_llm_client()
+        """Set the session's effective LLM first, followed by configured fallbacks."""
+        session = await self.ctx.session_mgr.resolve_session(event.sid, include_content=False)
+        default_model = self.ctx.get_default_llm_client(session)
         if default_model is None:
             logger.warning("[model-fallback] Default LLM is unavailable; skipping fallback setup")
             return
